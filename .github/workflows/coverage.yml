@@ -1,0 +1,34 @@
+name: Coverage
+on:
+  push:
+jobs:
+  build-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: sudo apt-get install libgtest-dev && sudo apt-get install gcovr && sudo apt-get install lcov
+      
+      - name: Checkout the repository
+        uses: actions/checkout@v3.5.3
+
+      - name: Configure the project
+        uses: threeal/cmake-action@v1.3.0
+
+      - name: Build the project
+        run: cmake --build build
+
+      - name: Build coverage
+        run: cmake --build build --target coverage-gcov
+        
+      - name: Code Coverage Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        with:
+          filename: build/coverage-gcov.xml
+          badge: true
+          fail_below_min: true
+          format: markdown
+          hide_branch_rate: false
+          hide_complexity: true
+          indicators: true
+          output: both
+          thresholds: '60 80'

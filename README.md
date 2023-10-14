@@ -1,3 +1,7 @@
+![Build](https://github.com/andreymasloboev/code_coverage/actions/workflows/build.yml/badge.svg)
+![Tests](https://github.com/andreymasloboev/code_coverage/actions/workflows/tests.yml/badge.svg)
+![Code Coverage](https://img.shields.io/badge/Code%20Coverage-80%25-success?style=flat)
+
 # Sample how-to build code coverage (lcov and gcov reports) in cmake projects with GoogleTest
 
 # Dependencies
